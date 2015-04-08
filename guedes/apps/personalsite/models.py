@@ -5,8 +5,8 @@ from filer.fields.image import FilerImageField
 
 
 class HomePage(models.Model):
-    page_title = models.CharField(_(u"Text Title"), max_length=300, blank=True)
-    meta_description = models.CharField(_(u"Text Title"), max_length=300, blank=True)
+    page_title = models.CharField(max_length=300)
+    meta_description = models.CharField(max_length=300, blank=True)
     picture = FilerImageField()
     text = RichTextField(config_name='default')
     facebook_link = models.URLField(blank=True)
