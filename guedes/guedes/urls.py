@@ -7,7 +7,7 @@ from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from solid_i18n.urls import solid_i18n_patterns
 from guedes.sitemap import sitemaps
-from personalsite.views import HomeView
+from randomfunctionalities.views import HomeView
 admin.autodiscover()
 
 urlpatterns = solid_i18n_patterns('',

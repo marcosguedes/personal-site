@@ -1,6 +1,9 @@
-# Create your views here.
-from django.shortcuts import render
+# -*- encoding: utf-8 -*-
+from .models import HomePage
+from django.views.generic.detail import DetailView
+# from django.views.generic.detail import DetailView
 
 
-def HomeView(request):
-    return render(request, 'index.html')
+class HomePageView(DetailView):
+    model = HomePage
+    template_name = "index.html"
