@@ -1,0 +1,14 @@
+@mixin opacity($opacity)
+
+    $opacity-ie: $opacity * 100
+
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity={$opacity-ie})"
+    filter: alpha(opacity=$opacity-ie)
+    opacity: $number
+
+@mixin unselectable()
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    -o-user-select: none
+    user-select: none

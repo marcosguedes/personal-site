@@ -3,7 +3,7 @@ from .models import HomePage
 
 
 class HomePageTranslationOptions(TranslationOptions):
-    fields = ('page_title', 'meta_description', )
+    fields = ('page_title',)
 
 
 translator.register(HomePage, HomePageTranslationOptions)

@@ -4,6 +4,7 @@ from django.views.generic.detail import DetailView
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 import logging
+from aboutme.models import Category
 
 log = logging.getLogger(__name__)
 
@@ -16,6 +17,12 @@ class HomePageView(DetailView):
         try:
             return HomePage.objects.get()
         except ObjectDoesNotExist:
-            # print "Homepage not created"
+            # https://realpython.com/blog/python/the-most-diabolical-python-antipattern
             log.error('Homepage not created!')
             raise Http404
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.filter(active=True)
+
+        return context

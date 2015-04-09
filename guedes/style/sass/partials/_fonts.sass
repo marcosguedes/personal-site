@@ -1,2 +1,37 @@
-// font-face fonts
-// see http://compass-style.org/docs/reference/compass/css3/font_face/
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300)
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400)
+
+$font: 'Roboto', sans-serif
+$condensedfont: 'Roboto Condensed', sans-serif
+
+@mixin fontMedium($size)
+    font:
+        family: $font
+        weight: 500
+        style: normal
+        size: $size
+
+@mixin fontRegular($size)
+    font:
+        family: $font
+        weight: 400
+        style: normal
+        size: $size
+
+@mixin fontLight($size: $font-size-base)
+    font:
+        family: $font
+        weight: 300
+        style: normal
+        size: $size
+
+@mixin fontCondensedRegular($size: $font-size-base)
+    font:
+        family: $condensedfont
+        weight: normal
+        style: normal
+        size: $size
+
+@mixin smoothingHack()
+    text-shadow: $black 0px 0px 1px
+    -webkit-text-stroke: 1px rgba(0,0,0,0.1)

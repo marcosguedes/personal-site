@@ -25,9 +25,12 @@ class Category(CommonAttributesMixin):
         verbose_name_plural = _(u"Categories")
         ordering = ['order']
 
+    def get_items(self):
+        return self.items.filter(active=True)
+
 
 class Interest(CommonAttributesMixin):
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, related_name="items")
     image = FilerImageField(blank=True, null=True)
     description = RichTextField(config_name='default', blank=True)
 
