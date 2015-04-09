@@ -18,10 +18,18 @@ class CommonAttributesMixin(models.Model):
 
 
 class Category(CommonAttributesMixin):
+    slug = models.SlugField(max_length=100, blank=True)
     short_description = models.CharField(max_length=300, blank=True)
+
+    class Meta:
+        verbose_name_plural = _(u"Categories")
+        ordering = ['order']
 
 
 class Interest(CommonAttributesMixin):
     category = models.ForeignKey(Category)
-    image = FilerImageField(blank=True)
+    image = FilerImageField(blank=True, null=True)
     description = RichTextField(config_name='default', blank=True)
+
+    class Meta:
+        ordering = ['order']

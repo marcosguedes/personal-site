@@ -5,22 +5,24 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
-from solid_i18n.urls import solid_i18n_patterns
 from guedes.sitemap import sitemaps
-from randomfunctionalities.views import HomeView
+from personalsite.views import HomePageView
 admin.autodiscover()
 
-urlpatterns = solid_i18n_patterns('',
-                            url(r'^admin/', include(admin.site.urls)),
+urlpatterns = patterns('',
+                       url(r'^i18n/', include('django.conf.urls.i18n')),
+                       )
 
+urlpatterns = i18n_patterns('',
+                            url(r'^admin/', include(admin.site.urls)),
                             url(r'^robots.txt$', include('robots.urls')),
                             # url(r'^humans\.txt$', TemplateView.as_view(template_name='humans.txt', content_type='text/plain')),
-                            url(r'^blog/', include('zinnia.urls')),
+                            # url(r'^blog/', include('zinnia.urls')),
                             url(r'^comments/', include('django.contrib.comments.urls')),
                             (r'^ckeditor/', include('ckeditor.urls')),
                             url(r'^sitemap.xml$', 'index', {'sitemaps': sitemaps}),
                             url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
-                            url(r'^$', HomeView, name='home'),
+                            url(r'^$', HomePageView.as_view(), name='home'),
                             )
 
 # debug static and media fiels urls

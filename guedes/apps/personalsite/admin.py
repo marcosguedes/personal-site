@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import HomePage
 from modeltranslation.admin import TranslationAdmin
+from solo.admin import SingletonModelAdmin
 
 
-class HomePageAdmin(TranslationAdmin):
+class HomePageAdmin(TranslationAdmin, SingletonModelAdmin):
 
     class Media:
         js = (

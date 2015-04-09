@@ -17,11 +17,12 @@ django-mptt==0.6.1
 django-polymorphic==0.6.1
 django-robots==1.0
 django-sekizai==0.8.1
+-e git+https://github.com/lazybird/django-solo@61fd55186ff2aa1f9816214d3a4a03c706d2f534#egg=django_solo-master
 django-tagging==0.3.4
 django-xmlrpc==0.1.5
+djangocms-admin-style==0.2.5
 easy-thumbnails==2.2
 pyparsing==1.5.7
 pytz==2015.2
 six==1.9.0
-solid-i18n==0.9.1
 wsgiref==0.1.2
