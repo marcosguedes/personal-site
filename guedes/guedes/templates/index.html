@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load sekizai_tags thumbnail i18n %}
+{% load sekizai_tags about_tags thumbnail i18n %}
 
 {% block head_title %}{{object.page_title}}{% endblock %}
 
@@ -9,12 +9,13 @@
         <div class="inner-container">
             {% if object.picture %}
             <div class="profile-image">
-                <img src="{% thumbnail 380x0 upscale %}" alt="" />
+                <img src="{% thumbnail object.picture 380x0 upscale %}" alt="" />
             </div>
             {% endif %}
             <div class="text">
                 {{ object.text|safe }}
             </div>
+            {% show_interest_masonry %}
         </div>
     </div>
 {% endblock %}
