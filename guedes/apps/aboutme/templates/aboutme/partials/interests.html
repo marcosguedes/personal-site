@@ -1,15 +1,15 @@
 {% load i18n sekizai_tags %}
 <div class="masonry-container col-xs-12">
-    <ul class="masonry-filters">
-        <li class="filter" data-filter="*">all</li>
+    <div class="masonry-filters">
+        <button type="button" class="filter btn btn-primary btn-xs" data-filter="*">{% trans "All" %}</button>
         {% for category in categories %}
-        <li class="filter" data-filter=".{{category.slug}}">{{ category }}</li>
+        <button type="button" class="filter btn btn-info btn-xs" aria-pressed="true" data-filter=".{{category.slug}}">{{ category }}</button>
         {% endfor %}
-    </ul>
+    </div>
     <div class="masonry">
         <ul class="interests">
             {% for interest in interest_list %}
-                <li class="item col-sm-3 {{ interest.category.slug }}"><a href="#">{{ interest }}</a></li>
+                <li class="item col-sm-3 col-md-2 {{ interest.category.slug }}"><a href="#">{{ interest }}</a></li>
             {% endfor %}
         </ul>
     </div>

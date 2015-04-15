@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	$container = $(".masonry");
-	console.log("oy");
 
 	$container.imagesLoaded( function() {
 	    $container.isotope({
@@ -10,7 +9,6 @@ $(document).ready(function(){
 	});
 
 	$('.filter').on( 'click', function() {
-		console.log("oy");
 	    var filterValue = $( this ).attr('data-filter');
 	    $container.isotope({ filter: filterValue });
 	});

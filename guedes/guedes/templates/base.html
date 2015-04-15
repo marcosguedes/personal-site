@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load sekizai_tags cache googleanalytics %}
+{% load sekizai_tags disclaimer_tags cache googleanalytics %}
 <html>
 	<head>
 		<title>{% block head_title %}{% endblock %}</title>
@@ -24,10 +24,11 @@
 	<body>{% spaceless %}
         <div class="image-background"><div class="image-credits"><small>Background image courtesy of: <a href="http://www.freepik.com/free-vector/blue-polygonal-background_758582.htm">Freepik</a></small></div></div>
 	    {% block content %}{% endblock %}
-	{% endspaceless %}
+	{% show_disclaimer %}{% endspaceless %}
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	{% addtoblock "js" %}
-	<script src="{{ STATIC_URL }}site/js/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}site/js/jquery/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}site/js/main.js"></script>
 	{% endaddtoblock %}
 	{% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}
 	</body>
