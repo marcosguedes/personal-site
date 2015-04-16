@@ -2220,8 +2220,7 @@ blockquote .small:before {
 
 /* line 274, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_type.scss */
 .blockquote-reverse,
-blockquote.pull-right,
-blockquote.text {
+blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid #eeeeee;
@@ -2233,11 +2232,8 @@ blockquote.text {
 .blockquote-reverse small:before,
 .blockquote-reverse .small:before,
 blockquote.pull-right footer:before,
-blockquote.text footer:before,
 blockquote.pull-right small:before,
-blockquote.text small:before,
-blockquote.pull-right .small:before,
-blockquote.text .small:before {
+blockquote.pull-right .small:before {
   content: '';
 }
 /* line 287, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_type.scss */
@@ -2245,11 +2241,8 @@ blockquote.text .small:before {
 .blockquote-reverse small:after,
 .blockquote-reverse .small:after,
 blockquote.pull-right footer:after,
-blockquote.text footer:after,
 blockquote.pull-right small:after,
-blockquote.text small:after,
-blockquote.pull-right .small:after,
-blockquote.text .small:after {
+blockquote.pull-right .small:after {
   content: '\00A0 \2014';
 }
 
@@ -2392,7 +2385,7 @@ pre code {
 }
 
 /* line 11, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .profile-image, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .text, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .item, .col-lg-2, .col-xs-3, .col-sm-3, .item, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .profile-image, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .item, .col-sm-6, .text, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .masonry-container, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 10px;
@@ -2400,7 +2393,7 @@ pre code {
 }
 
 /* line 27, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .item, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
 
@@ -2430,7 +2423,7 @@ pre code {
 }
 
 /* line 35, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-.col-xs-6 {
+.col-xs-6, .item {
   width: 50%;
 }
 
@@ -2661,7 +2654,7 @@ pre code {
 
 @media (min-width: 768px) {
   /* line 27, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .profile-image, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .text, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, .item, .col-sm-4, .profile-image, .col-sm-5, .col-sm-6, .text, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .masonry-container, .col-sm-11, .col-sm-12 {
     float: left;
   }
 
@@ -2676,7 +2669,7 @@ pre code {
   }
 
   /* line 35, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-sm-3 {
+  .col-sm-3, .item {
     width: 25%;
   }
 
@@ -2691,7 +2684,7 @@ pre code {
   }
 
   /* line 35, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-sm-6 {
+  .col-sm-6, .text {
     width: 50%;
   }
 
@@ -2701,7 +2694,7 @@ pre code {
   }
 
   /* line 35, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-sm-8, .text {
+  .col-sm-8 {
     width: 66.66666667%;
   }
 
@@ -2711,7 +2704,7 @@ pre code {
   }
 
   /* line 35, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-sm-10 {
+  .col-sm-10, .masonry-container {
     width: 83.33333333%;
   }
 
@@ -2861,7 +2854,7 @@ pre code {
   }
 
   /* line 60, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-sm-offset-1 {
+  .col-sm-offset-1, .profile-image, .masonry-container {
     margin-left: 8.33333333%;
   }
 
@@ -2922,7 +2915,7 @@ pre code {
 }
 @media (min-width: 992px) {
   /* line 27, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .item, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
 
@@ -2932,7 +2925,7 @@ pre code {
   }
 
   /* line 35, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
-  .col-md-2 {
+  .col-md-2, .item {
     width: 16.66666667%;
   }
 
@@ -4748,7 +4741,7 @@ tbody.collapse.in {
   background-clip: padding-box;
 }
 /* line 53, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_dropdowns.scss */
-.dropdown-menu.pull-right, .dropdown-menu.text {
+.dropdown-menu.pull-right {
   right: 0;
   left: auto;
 }
@@ -4840,7 +4833,7 @@ tbody.collapse.in {
 }
 
 /* line 172, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_dropdowns.scss */
-.pull-right > .dropdown-menu, .text > .dropdown-menu {
+.pull-right > .dropdown-menu {
   right: 0;
   left: auto;
 }
@@ -6729,8 +6722,7 @@ a.thumbnail.active {
 
 /* line 24, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_media.scss */
 .media-right,
-.media > .pull-right,
-.media > .text {
+.media > .pull-right {
   padding-left: 10px;
 }
 
@@ -8204,7 +8196,7 @@ button.close {
 }
 
 /* line 15, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_utilities.scss */
-.pull-right, .text {
+.pull-right {
   float: right !important;
 }
 
@@ -8567,12 +8559,17 @@ ul, li {
 }
 
 /* line 12, ../../../style/sass/partials/_style.sass */
+h1 {
+  margin-top: 0;
+}
+
+/* line 15, ../../../style/sass/partials/_style.sass */
 .container {
   padding-top: 40px;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* line 16, ../../../style/sass/partials/_style.sass */
+/* line 19, ../../../style/sass/partials/_style.sass */
 .image-background {
   position: fixed;
   top: 0;
@@ -8587,19 +8584,19 @@ ul, li {
   background-size: cover;
 }
 
-/* line 26, ../../../style/sass/partials/_style.sass */
+/* line 29, ../../../style/sass/partials/_style.sass */
 .image-credits {
   position: absolute;
   right: 10px;
   bottom: 10px;
 }
 
-/* line 37, ../../../style/sass/partials/_style.sass */
+/* line 41, ../../../style/sass/partials/_style.sass */
 .profile-image img {
   width: 100%;
 }
 
-/* line 40, ../../../style/sass/partials/_style.sass */
+/* line 44, ../../../style/sass/partials/_style.sass */
 #warning-container {
   position: fixed;
   display: none;
@@ -8608,22 +8605,22 @@ ul, li {
   width: 100%;
 }
 
-/* line 51, ../../../style/sass/partials/_style.sass */
+/* line 54, ../../../style/sass/partials/_style.sass */
 .masonry-filters {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 55, ../../../style/sass/partials/_style.sass */
+/* line 58, ../../../style/sass/partials/_style.sass */
 .masonry-filters .filter {
-  margin-right: 10px;
+  margin: 0 10px 10px 0;
 }
 
-/* line 61, ../../../style/sass/partials/_style.sass */
+/* line 68, ../../../style/sass/partials/_style.sass */
 .item {
   margin-bottom: 20px;
 }
 
-/* line 65, ../../../style/sass/partials/_style.sass */
+/* line 75, ../../../style/sass/partials/_style.sass */
 .item a {
   background-color: rgba(0, 0, 0, 0.2);
   display: block;

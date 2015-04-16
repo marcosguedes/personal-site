@@ -2,10 +2,8 @@ $(document).ready(function(){
 	$container = $(".masonry");
 
 	$container.imagesLoaded( function() {
-	    $container.isotope({
-	  	    itemSelector: ".item",
-	  	    // filter: ".filter",
-	    });
+	    loadIsotope($container);
+		resizeItems();
 	});
 
 	$('.filter').on( 'click', function() {
@@ -22,3 +20,34 @@ $(document).ready(function(){
   	});
 
 });
+
+$(document).ready(function(){
+	resizeItems();
+});
+
+$( window ).resize(function() {
+    try {
+        clearTimeout(isotopeTimeout);
+    } catch(e) {}
+
+    var isotopeTimeout = setTimeout(function(){
+	    resizeItems();
+	    loadIsotope($(".masonry"));
+    }, 500);
+});
+
+function resizeItems(){
+	$(".interests .item").each(function(e){
+		$this = $(this);
+		var itemWidth = $this.width();
+		$this.height(itemWidth);
+	});
+}
+
+function loadIsotope($elem){
+	$elem.isotope({
+  	    itemSelector: ".item",
+  	    layoutMode: "fitRows",
+    });
+}
+

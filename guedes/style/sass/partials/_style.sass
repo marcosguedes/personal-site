@@ -9,6 +9,9 @@ ul, li
     list-style-type: none
     padding: 0
 
+h1
+    margin-top: 0
+
 .container
     padding-top: $gutter * 2
     background-color: rgba(255, 255, 255, 0.8)
@@ -32,6 +35,7 @@ ul, li
     @extend .row
 
 .profile-image
+    @extend .col-sm-offset-1
     @extend .col-sm-4
 
     img
@@ -45,20 +49,26 @@ ul, li
     width: 100%
 
 .text
-    @extend .col-sm-8
-    @extend .pull-right
+    @extend .col-sm-6
 
 .masonry-filters
     margin-top: $gutter
     margin-bottom: $gutter
 
     .filter
-        margin-right: $half-gutter
+        margin: 0 $half-gutter $half-gutter 0
+
+.masonry-container
+    @extend .col-sm-offset-1
+    @extend .col-sm-10
 
 .masonry
     @extend .row
 
 .item
+    @extend .col-xs-6
+    @extend .col-sm-3
+    @extend .col-md-2
     margin-bottom: $gutter
 
 

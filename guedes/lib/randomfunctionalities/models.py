@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
 from solo.models import SingletonModel
+from colorful.fields import RGBColorField
 
 
 class Microformat(SingletonModel):
@@ -17,4 +18,19 @@ class Microformat(SingletonModel):
     country = models.CharField(max_length=50)
     thumb = FilerImageField(blank=True, null=True)  # django-solo required FilerImage to be null
     description = models.CharField(max_length=300, blank=True)
-    last_update = models.DateField()
+    last_update = models.DateField(blank=True, null=True)
+
+
+ICON_CHOICES = [
+    ['fb', _(u'Facebook')],
+    ['tw', _(u'Twitter')],
+    ['gh', _(u'Github')],
+    ['li', _(u'LinkedIn')],
+]
+
+
+class Network(models.Model):
+    name = models.CharField(max_length=100)
+    color = RGBColorField()
+    icon = models.CharField(max_length=2, choices=ICON_CHOICES)
+    order = models.SmallIntegerField(default=0)

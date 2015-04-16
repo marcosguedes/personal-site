@@ -10,6 +10,3 @@ class HomePage(SingletonModel):
     # meta_description = models.CharField(max_length=300, blank=True)
     picture = FilerImageField(blank=True, null=True)  # django-solo required FilerImage to be null
     text = RichTextField(config_name='default')
-    facebook_link = models.URLField(blank=True)
-    github_link = models.URLField(blank=True)
-    linkedin_link = models.URLField(blank=True)

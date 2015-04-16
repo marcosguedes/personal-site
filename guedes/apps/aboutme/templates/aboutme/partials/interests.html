@@ -9,7 +9,7 @@
     <div class="masonry">
         <ul class="interests">
             {% for interest in interest_list %}
-                <li class="item col-sm-3 col-md-2 {{ interest.category.slug }}"><a href="#">{{ interest }}</a></li>
+                <li class="item {{ interest.category.slug }}"><a href="#">{{ interest }}</a></li>
             {% endfor %}
         </ul>
     </div>
