@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load sekizai_tags disclaimer_tags cache googleanalytics %}
+{% load sekizai_tags disclaimer_tags functionality_tags cache googleanalytics %}
 <html>
 	<head>
 		<title>{% block head_title %}{% endblock %}</title>
@@ -22,6 +22,8 @@
         {% google_analytics %}
 	</head>
 	<body>{% spaceless %}
+	    {% render_microformat %}
+	    {% render_networking %}
         <div class="image-background"><div class="image-credits"><small>Background image courtesy of: <a href="http://www.freepik.com/free-vector/blue-polygonal-background_758582.htm">Freepik</a></small></div></div>
 	    {% block content %}{% endblock %}
 	{% show_disclaimer %}{% endspaceless %}

@@ -15,7 +15,6 @@ class Microformat(SingletonModel):
     name = models.CharField(max_length=300)
     title = models.CharField(max_length=100, blank=True)
     workplace = models.CharField(max_length=100, blank=True)
-    country = models.CharField(max_length=50)
     thumb = FilerImageField(blank=True, null=True)  # django-solo required FilerImage to be null
     description = models.CharField(max_length=300, blank=True)
     last_update = models.DateField(blank=True, null=True)
@@ -31,6 +30,14 @@ ICON_CHOICES = [
 
 class Network(models.Model):
     name = models.CharField(max_length=100)
+    url = models.URLField(max_length=200)
     color = RGBColorField()
     icon = models.CharField(max_length=2, choices=ICON_CHOICES)
     order = models.SmallIntegerField(default=0)
+    
+    def __unicode__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['order', 'name']
+    
