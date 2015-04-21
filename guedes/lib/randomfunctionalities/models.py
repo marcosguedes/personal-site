@@ -21,10 +21,13 @@ class Microformat(SingletonModel):
 
 
 ICON_CHOICES = [
-    ['fb', _(u'Facebook')],
-    ['tw', _(u'Twitter')],
-    ['gh', _(u'Github')],
-    ['li', _(u'LinkedIn')],
+    ['icon-facebook', _(u'Facebook')],
+    # ['tw', _(u'Twitter')],
+    ['icon-github', _(u'Github')],
+    ['icon-linkedin', _(u'LinkedIn')],
+    ['icon-youtube', _(u'Youtube')],
+    ['icon-stackoverflow', _(u'Stackoverflow')],
+    ['icon-soundcloud', _(u'Soundcloud')],
 ]
 
 
@@ -32,7 +35,7 @@ class Network(models.Model):
     name = models.CharField(max_length=100)
     url = models.URLField(max_length=200)
     color = RGBColorField()
-    icon = models.CharField(max_length=2, choices=ICON_CHOICES)
+    icon = models.CharField(max_length=50, choices=ICON_CHOICES)
     order = models.SmallIntegerField(default=0)
     
     def __unicode__(self):

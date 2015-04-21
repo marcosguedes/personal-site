@@ -1,10 +1,10 @@
 $(document).ready(function(){
-    
+
     //$.cookies.set("cookie-disclaimer", false);  // -- used for app testing
     if ($.cookies.get("cookie-disclaimer") == true){
         $("#warning-container").hide();
     }else{
-        $("#warning-container").delay(500).slideToggle("slow");
+        $("#warning-container").delay(500).slideToggle(100);
     };
     $(".terms").click(function(e){
         e.preventDefault();
@@ -13,7 +13,7 @@ $(document).ready(function(){
     });
     $(".close-warning").click(function(e){
         e.preventDefault();
-        $("#warning-container").slideToggle("slow");
+        $("#warning-container").slideToggle(100);
 	var newOptions = {
 		expiresAt: new Date( 2099, 1, 1 ),
 	    };
