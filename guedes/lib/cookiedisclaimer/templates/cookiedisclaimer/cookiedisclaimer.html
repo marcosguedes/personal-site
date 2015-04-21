@@ -1,0 +1,14 @@
+{% load i18n sekizai_tags %}
+
+{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}cookiedisclaimer/js/jquery/jquery.cookies.2.2.0.min.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}cookiedisclaimer/js/cookie-disclaimer.js"></script>{% endaddtoblock %}
+
+{% if disclaimer %}
+<div id="warning-container">
+    <div id="cookie-warning">
+        <p class="lead">{{ disclaimer.text|linebreaksbr }}.</p>
+        <a class="close-warning" href="">{% trans "I understand" %}</a>
+        <a class="exit" href="http://livepuppycam.com/">{% trans "Get me out of here" %}!</a>
+    </div>
+</div>
+{% endif %}
