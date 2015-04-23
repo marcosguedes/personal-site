@@ -37,10 +37,9 @@ class Network(models.Model):
     color = RGBColorField()
     icon = models.CharField(max_length=50, choices=ICON_CHOICES)
     order = models.SmallIntegerField(default=0)
-    
+
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
         ordering = ['order', 'name']
-    

@@ -1,10 +1,33 @@
+$network-font-size: $gutter + $half-gutter
+
 #network
     position: fixed
-    top: ($gutter * 4)
+    top: ($gutter * 5)
     right: 0
-    width: ($gutter * 10)
     z-index: $networking-index
-    background-color: $lightbg
+    background-color: transparent
 
 .network-item
     display: block
+    border-radius: 10% 0 0 10%
+    margin-bottom: $gutter
+    // need float+clear to independently animate
+    float: right
+    clear: both
+
+    a
+        display: block
+        width: 100%
+        padding: $half-gutter
+        font-size: $network-font-size
+        line-height: $network-font-size
+        color: $white
+        +transition(padding-right .05s linear)
+
+    a:hover
+        color: $white
+        padding-right: $gutter
+
+    .icon:before
+        width: $network-font-size
+        margin: 0

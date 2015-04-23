@@ -8723,17 +8723,43 @@ h1 {
   margin-right: 20px;
 }
 
-/* line 1, ../../../style/sass/partials/_network.sass */
+/* line 3, ../../../style/sass/partials/_network.sass */
 #network {
   position: fixed;
-  top: 80px;
+  top: 100px;
   right: 0;
-  width: 200px;
   z-index: 1;
-  background-color: #fff;
+  background-color: transparent;
 }
 
-/* line 9, ../../../style/sass/partials/_network.sass */
+/* line 10, ../../../style/sass/partials/_network.sass */
 .network-item {
   display: block;
+  border-radius: 10% 0 0 10%;
+  margin-bottom: 20px;
+  float: right;
+  clear: both;
+}
+/* line 18, ../../../style/sass/partials/_network.sass */
+.network-item a {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 30px;
+  line-height: 30px;
+  color: #fff;
+  -moz-transition: padding-right 0.05s linear;
+  -o-transition: padding-right 0.05s linear;
+  -webkit-transition: padding-right 0.05s linear;
+  transition: padding-right 0.05s linear;
+}
+/* line 27, ../../../style/sass/partials/_network.sass */
+.network-item a:hover {
+  color: #fff;
+  padding-right: 20px;
+}
+/* line 31, ../../../style/sass/partials/_network.sass */
+.network-item .icon:before {
+  width: 30px;
+  margin: 0;
 }
