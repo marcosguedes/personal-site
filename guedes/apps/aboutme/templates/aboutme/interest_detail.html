@@ -5,12 +5,12 @@
 {% block head_title %}{{object.page_title}}{% endblock %}
 
 {% block content_detail %}
-    {% if object.picture %}
+    {% if object.image %}
     <div class="profile-image">
-        <img src="{% thumbnail object.picture 380x0 upscale %}" alt="" />
+        <img src="{% thumbnail object.image 380x0 upscale %}" alt="" />
     </div>
     {% endif %}
     <div class="text">
-        {{ object.text|safe }}
+        {{ object.description|safe }}
     </div>
 {% endblock %}

@@ -19,10 +19,8 @@ $(document).ready(function(){
     	});
   	});
 
-});
+    resizeItems();
 
-$(document).ready(function(){
-	resizeItems();
 });
 
 $( window ).resize(function() {
@@ -50,4 +48,3 @@ function loadIsotope($elem){
   	    layoutMode: "fitRows",
     });
 }
-

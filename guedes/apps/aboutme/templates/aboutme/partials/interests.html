@@ -9,12 +9,11 @@
     <div class="masonry">
         <ul class="interests">
             {% for interest in interest_list %}
-                <li class="item {{ interest.category.slug }}"><a href="#">{{ interest }}</a></li>
+                <li class="item {{ interest.category.slug }}"><a href="{{ interest.get_absolute_url }}">{{ interest }}</a></li>
             {% endfor %}
         </ul>
     </div>
 </div>
-
 {% addtoblock "js" %}<script src="{{ STATIC_URL }}aboutme/js/jquery/isotope.pkgd.min.js"></script>{% endaddtoblock %}
 {% addtoblock "js" %}<script src="{{ STATIC_URL }}aboutme/js/jquery/imagesloaded.pkgd.min.js"></script>{% endaddtoblock %}
-{% addtoblock "js" %}<script src="{{ STATIC_URL }}aboutme/js/masonry.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{{ STATIC_URL }}aboutme/js/aboutme.js"></script>{% endaddtoblock %}

@@ -64,6 +64,14 @@ h1
     @extend .col-md-2
     margin-bottom: $gutter
 
+.item-content
+    top: 0
+    margin-bottom: -$gutter
+    height: 0
+    overflow: hidden
+
+    &.active
+        height: 400px
 
 .item a
     background-color: rgba(0, 0, 0, 0.2)

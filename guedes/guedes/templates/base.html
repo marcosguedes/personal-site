@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load sekizai_tags disclaimer_tags functionality_tags cache googleanalytics %}
+{% load sekizai_tags i18n about_tags disclaimer_tags functionality_tags cache googleanalytics %}
 <html>
 	<head>
 		<title>{% block head_title %}{% endblock %}</title>
@@ -24,7 +24,23 @@
 	<body>{% spaceless %}{% render_microformat %}{% show_disclaimer %}
 	    {% render_networking %}
         <div class="image-background"><div class="image-credits"><small>Background image courtesy of: <a href="http://www.freepik.com/free-vector/blue-polygonal-background_758582.htm">Freepik</a></small></div></div>
-	    {% block content %}{% endblock %}
+
+        {% block content %}
+            <div class="container">
+                <div class="inner-container">
+                    {% block content_detail %}
+                    {% endblock %}
+                    {% block interest_menu %}
+                        <div class="col-xs-12 col-sm-11 col-sm-offset-1">
+                            <h1>{% trans "About Me" %}</h1>
+                        </div>
+                        {% show_interest_masonry %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+
+
 	{% endspaceless %}
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	{% addtoblock "js" %}

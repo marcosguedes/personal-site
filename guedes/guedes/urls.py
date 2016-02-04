@@ -23,6 +23,7 @@ urlpatterns = i18n_patterns('',
                             url(r'^sitemap.xml$', 'index', {'sitemaps': sitemaps}),
                             url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
                             url(r'^$', HomePageView.as_view(), name='home'),
+                            url(r'^interest/', include('aboutme.urls')),
                             )
 
 # debug static and media fiels urls
