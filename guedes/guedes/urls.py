@@ -4,24 +4,19 @@ from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from django.contrib import admin
-from django.conf.urls.i18n import i18n_patterns
 from guedes.sitemap import sitemaps
 from personalsite.views import HomePageView
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^i18n/', include('django.conf.urls.i18n')),
-                       )
-
-urlpatterns = i18n_patterns('',
                             url(r'^admin/', include(admin.site.urls)),
                             url(r'^robots.txt$', include('robots.urls')),
                             # url(r'^humans\.txt$', TemplateView.as_view(template_name='humans.txt', content_type='text/plain')),
                             url(r'^blog/', include('zinnia.urls')),
-                            url(r'^comments/', include('django.contrib.comments.urls')),
-                            (r'^ckeditor/', include('ckeditor.urls')),
-                            url(r'^sitemap.xml$', 'index', {'sitemaps': sitemaps}),
-                            url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
+                            # url(r'^comments/', include('django.contrib.comments.urls')),
+                            # (r'^ckeditor/', include('ckeditor.urls')),
+                            # url(r'^sitemap.xml$', 'index', {'sitemaps': sitemaps}),
+                            # url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
                             url(r'^$', HomePageView.as_view(), name='home'),
                             url(r'^interest/', include('aboutme.urls')),
                             )
