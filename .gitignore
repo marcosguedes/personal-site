@@ -2,7 +2,7 @@
 /guedes/static/*
 
 local_settings.py
-error.log
+errors.log
 *local_settings.py
 .sass-cache/
 env/
