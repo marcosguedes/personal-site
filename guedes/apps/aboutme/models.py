@@ -41,7 +41,8 @@ class Category(CommonAttributesMixin):
 
 class Interest(CommonAttributesMixin):
     category = models.ForeignKey(Category, related_name="items")
-    image = FilerImageField(blank=True, null=True)
+    thumbnail = FilerImageField(blank=True, null=True, related_name="interest_thumb")
+    image = FilerImageField(blank=True, null=True, related_name="interest_image")
     description = RichTextField(config_name='default', blank=True)
     slug = models.SlugField(max_length=100)
 
@@ -52,3 +53,13 @@ class Interest(CommonAttributesMixin):
 
     def get_absolute_url(self):
         return reverse("interest_detail", kwargs={"slug": self.slug})
+    
+    def get_thumbnail(self):
+        try:
+            if self.thumbnail:
+                return self.thumbnail
+            else:
+                return self.image
+        except Exception as e:
+            print "No thumbnail found"
+            return None
