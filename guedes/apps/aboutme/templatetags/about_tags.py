@@ -8,7 +8,7 @@ register = template.Library()
 
 @register.inclusion_tag('aboutme/partials/interests.html', takes_context=True)
 def show_interest_masonry(context):
-    interests = Interest.objects.filter(active=True)
+    interests = Interest.objects.active().filter(category__active=True)
     interest_list = []
     categories = []
 

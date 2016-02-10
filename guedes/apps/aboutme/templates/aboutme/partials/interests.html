@@ -1,4 +1,4 @@
-{% load i18n sekizai_tags %}
+{% load i18n sekizai_tags thumbnail %}
 <div class="masonry-container col-xs-12">
     <div class="masonry-filters">
         <button type="button" class="filter btn btn-primary btn-xs" data-filter="*">{% trans "All" %}</button>
@@ -9,7 +9,12 @@
     <div class="masonry">
         <ul class="interests">
             {% for interest in interest_list %}
-                <li class="item {{ interest.category.slug }}"><a href="{{ interest.get_absolute_url }}">{{ interest }}</a></li>
+                <li class="item {{ interest.category.slug }}">
+                    <a href="{{ interest.get_absolute_url }}" title="{{ interest }}">
+                        <img src="{% thumbnail interest.get_thumbnail 350x350 crop %}" title="{{ interest }}" />
+                        <div class="item-title">{{ interest }}</div>
+                    </a>
+                </li>
             {% endfor %}
         </ul>
     </div>

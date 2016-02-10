@@ -16,6 +16,10 @@ h1
     padding-top: $gutter * 2
     background-color: rgba(255, 255, 255, 0.8)
 
+.details
+    margin-bottom: $gutter
+    +clearfix
+
 .image-background
     position: fixed
     top: 0
@@ -63,6 +67,29 @@ h1
     @extend .col-sm-3
     @extend .col-md-2
     margin-bottom: $gutter
+    +opacity(0.8)
+    +transition(0.1s opacity)
+
+    &:hover
+        +opacity(1)
+
+    a
+        background-color: rgba(0, 0, 0, 0.2)
+        display: block
+        width: 100%
+        height: 100%
+
+    img
+        width: 100%
+
+.item-title
+    +fontMedium(14px)
+    position: absolute
+    top: 0
+    left: ($gutter / 2)
+    padding: ($gutter / 2)
+    display: table-cell
+    color: $white
 
 .item-content
     top: 0
@@ -72,9 +99,3 @@ h1
 
     &.active
         height: 400px
-
-.item a
-    background-color: rgba(0, 0, 0, 0.2)
-    display: block
-    width: 100%
-    height: 100%

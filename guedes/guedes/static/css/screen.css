@@ -8888,6 +8888,20 @@ h1 {
 }
 
 /* line 19, ../../../style/sass/partials/_style.sass */
+.details {
+  margin-bottom: 20px;
+}
+/* line 14, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.5.1/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+.details:before, .details:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../../../../../.rvm/gems/ruby-2.2.0/gems/bootstrap-sass-3.3.5.1/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+.details:after {
+  clear: both;
+}
+
+/* line 23, ../../../style/sass/partials/_style.sass */
 .image-background {
   position: fixed;
   top: 0;
@@ -8902,51 +8916,79 @@ h1 {
   background-size: cover;
 }
 
-/* line 29, ../../../style/sass/partials/_style.sass */
+/* line 33, ../../../style/sass/partials/_style.sass */
 .image-credits {
   position: absolute;
   right: 10px;
   bottom: 10px;
 }
 
-/* line 41, ../../../style/sass/partials/_style.sass */
+/* line 45, ../../../style/sass/partials/_style.sass */
 .profile-image img {
   width: 100%;
 }
 
-/* line 47, ../../../style/sass/partials/_style.sass */
+/* line 51, ../../../style/sass/partials/_style.sass */
 .masonry-filters {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 51, ../../../style/sass/partials/_style.sass */
+/* line 55, ../../../style/sass/partials/_style.sass */
 .masonry-filters .filter {
   margin: 0 10px 10px 0;
 }
 
-/* line 61, ../../../style/sass/partials/_style.sass */
+/* line 65, ../../../style/sass/partials/_style.sass */
 .item {
   margin-bottom: 20px;
-}
-
-/* line 67, ../../../style/sass/partials/_style.sass */
-.item-content {
-  top: 0;
-  margin-bottom: -20px;
-  height: 0;
-  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  -moz-transition: opacity 0.1s;
+  -o-transition: opacity 0.1s;
+  -webkit-transition: opacity 0.1s;
+  transition: opacity 0.1s;
 }
 /* line 73, ../../../style/sass/partials/_style.sass */
-.item-content.active {
-  height: 400px;
+.item:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
 }
-
 /* line 76, ../../../style/sass/partials/_style.sass */
 .item a {
   background-color: rgba(0, 0, 0, 0.2);
   display: block;
   width: 100%;
   height: 100%;
+}
+/* line 82, ../../../style/sass/partials/_style.sass */
+.item img {
+  width: 100%;
+}
+
+/* line 85, ../../../style/sass/partials/_style.sass */
+.item-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding: 10px;
+  display: table-cell;
+  color: #fff;
+}
+
+/* line 94, ../../../style/sass/partials/_style.sass */
+.item-content {
+  top: 0;
+  margin-bottom: -20px;
+  height: 0;
+  overflow: hidden;
+}
+/* line 100, ../../../style/sass/partials/_style.sass */
+.item-content.active {
+  height: 400px;
 }
 
 /* line 1, ../../../style/sass/partials/_disclaimer.sass */
