@@ -6,7 +6,6 @@ Unidecode==0.04.19
 argparse==1.2.1
 beautifulsoup4==4.4.1
 django-appconf==1.0.1
-django-blog-zinnia==0.15.2
 django-ckeditor==5.0.3
 django-classy-tags==0.7.1
 django-colorful==1.1.0
@@ -22,7 +21,7 @@ django-sekizai==0.9.0
 -e git+https://github.com/lazybird/django-solo@61fd55186ff2aa1f9816214d3a4a03c706d2f534#egg=django_solo-dev
 django-tagging==0.4.1
 django-xmlrpc==0.1.5
-djangocms-admin-style==1.1.0
+djangocms-admin-style==0.2.5
 easy-thumbnails==2.3
 mots-vides==2015.5.11
 pyparsing==2.0.7
