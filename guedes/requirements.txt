@@ -12,7 +12,6 @@ django-colorful==1.1.0
 django-compressor==2.0
 django-contrib-comments==1.6.2
 django-filer==1.1.1
-django-google-analytics==1
 django-maintenancemode==0.11.2
 django-mptt==0.8.0
 django-polymorphic==0.8.1

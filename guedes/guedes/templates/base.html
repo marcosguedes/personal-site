@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load sekizai_tags i18n about_tags disclaimer_tags functionality_tags cache googleanalytics %}
+{% load sekizai_tags i18n about_tags disclaimer_tags functionality_tags cache %}
 <html>
 	<head>
 		<title>{% block head_title %}{% endblock %}</title>
@@ -19,7 +19,6 @@
 		<![endif]-->
         <link href="{{ STATIC_URL }}site/css/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
 		{% endaddtoblock %}
-        {% google_analytics %}
 	</head>
 	<body>{% spaceless %}{% render_microformat %}{% show_disclaimer %}
 	    {% render_networking %}
