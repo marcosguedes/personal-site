@@ -24,7 +24,7 @@ class Tag(models.Model):
 class Post(models.Model):
     published = models.BooleanField(verbose_name=_(u"Published"), default=True)
     title = models.CharField(verbose_name=_(u"Title"), max_length=200)
-    slug = models.SlugField(verbose_name=_(u"Slug"), max_length=200)
+    slug = models.SlugField(verbose_name=_(u"Slug"), max_length=200, unique=True)
     date_created = models.DateField(verbose_name=_(u"Date Created"), default=datetime.date.today)
     tags = models.ManyToManyField(Tag, verbose_name=_(u"Tags"), blank=True, related_name="posts")
 
@@ -33,7 +33,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = _(u"Post")
         verbose_name_plural = _(u"Posts")
-        ordering = ['date_created']
+        ordering = ['-date_created']
 
     def __str__(self):
         return self.title

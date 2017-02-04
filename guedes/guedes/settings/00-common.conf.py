@@ -160,6 +160,7 @@ INSTALLED_APPS = [
     'solo',
     
     'aboutme',
+    'blog',
     'personalsite',
     'cookiedisclaimer',
     'randomfunctionalities',

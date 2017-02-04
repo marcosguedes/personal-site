@@ -28,7 +28,7 @@ class CommonAttributesMixin(models.Model):
 
 
 class Category(CommonAttributesMixin):
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(max_length=100, blank=True, unique=True)
     short_description = models.CharField(max_length=300, blank=True)
 
     class Meta:
