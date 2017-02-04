@@ -5,6 +5,6 @@ from .views import HomePageView
 
 admin.autodiscover()
 
-company_patterns = patterns('',
-                            url(r'^$', HomePageView.as_view(), name='home'),
-                            )
+urlpatterns = patterns('',
+                        url(r'^$', HomePageView.as_view(), name='home'),
+                        )

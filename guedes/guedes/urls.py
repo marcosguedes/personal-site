@@ -15,7 +15,7 @@ urlpatterns = patterns('',
                             url(r'^blog/', include('blog.urls')),
                             (r'^ckeditor/', include('ckeditor_uploader.urls')),
                             url(r'^interest/', include('aboutme.urls')),
-                            url(r'^', HomePageView.as_view(), name='home'),
+                            url(r'^', include('personalsite.urls')),
                             )
 
 # debug static and media fiels urls
