@@ -19,7 +19,7 @@ class CommonAttributesMixin(models.Model):
 
     objects = InterestManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -61,5 +61,5 @@ class Interest(CommonAttributesMixin):
             else:
                 return self.image
         except Exception as e:
-            print "No thumbnail found"
+            print("No thumbnail found")
             return None

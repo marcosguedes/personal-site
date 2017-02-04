@@ -1,4 +1,3 @@
-/guedes/guedes/settings/
 /guedes/static/*
 
 local_settings.py
@@ -20,4 +19,5 @@ media/
 backups/
 *~
 *.komodoproject
-
+/guedes/guedes/settings/92-local_settings_devel.conf.py
+/guedes/logs/

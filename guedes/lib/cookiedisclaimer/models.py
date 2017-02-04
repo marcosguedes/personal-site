@@ -10,5 +10,5 @@ class CookieDisclaimer(SingletonModel):
     class Meta:
         verbose_name_plural = _(u"Cookie Disclaimer")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.text[:50]

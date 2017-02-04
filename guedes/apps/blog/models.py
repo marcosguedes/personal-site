@@ -15,7 +15,7 @@ class PostManager(models.Manager):
 class Tag(models.Model):
     name = models.CharField(max_length=20)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
     
     def get_related_posts(self):
@@ -35,7 +35,7 @@ class Post(models.Model):
         verbose_name_plural = _(u"Posts")
         ordering = ['date_created']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_tags(self):
