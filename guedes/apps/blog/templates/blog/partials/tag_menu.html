@@ -1,0 +1,19 @@
+{% load sekizai_tags i18n %}
+<nav class="list-group hidden-xs">
+{% for tag in tag_list %}
+	<a class="list-group-item{% if request.path = tag.get_absolute_url or tag in active_list %} active{% endif %}" href="{{ tag.get_absolute_url }}">
+			{{ tag.name }} &nbsp;<span class="badge">{{ tag.get_related_posts.count }}</span>
+	</a>
+{% endfor %}
+</nav>
+
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+<ul class="dropdown-menu">
+{% for tag in tag_list %}
+	<li><a class="{% if request.path = tag.get_absolute_url or tag in active_list %} btn-primary active{% endif %}" href="{{ tag.get_absolute_url }}">
+			{{ tag.name }} &nbsp;<span class="badge">{{ tag.get_related_posts.count }}</span>
+		</a></li>
+{% endfor %}
+</ul>

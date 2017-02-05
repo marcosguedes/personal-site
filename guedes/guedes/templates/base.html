@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<title>{% block head_title %}{% endblock %}</title>
-
+		<meta name="viewport" content="initial-scale=1">
 		{% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
 		{% addtoblock "css" %}
         <link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
         <link href="{{ STATIC_URL }}site/css/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
 		{% endaddtoblock %}
 	</head>
-	<body>{% spaceless %}{% render_microformat %}{% show_disclaimer %}
+	<body class="{% block bodyclass %}{% endblock %}">{% spaceless %}{% render_microformat %}{% show_disclaimer %}
 	    {% render_networking %}
         <div class="image-background"><div class="image-credits"><small>Background image courtesy of: <a href="http://www.freepik.com/free-vector/blue-polygonal-background_758582.htm">Freepik</a></small></div></div>
 

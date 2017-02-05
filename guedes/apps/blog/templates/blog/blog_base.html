@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load sekizai_tags blog_tags thumbnail i18n solo_tags %}
+
+{% block head_title %}{% get_solo 'personalsite.HomePage' as config %}{{ config.page_title }} {% trans "Blog" %}{% endblock %}
+
+{% block bodyclass %}blog{% endblock %}
+
+{% block content_detail %}
+    {% get_solo 'personalsite.HomePage' as config %}
+	<aside class="col-xs-12 col-sm-3 pull-">
+		{% if config.picture %}<a href="/" class="back-home hidden-xs"><img src="{% thumbnail config.picture 380x0 upscale %}" alt="{{ config.page_title }} {% trans "Blog" %}" /></a>{% endif %}
+	    <h1>
+	    	<a href="{% url 'blog:post_list' %}" class="back-home">{{ config.page_title }} {% trans "Blog" %}</a>
+	    	<a href="/" class="back-blog">{% trans "Back to Home" %}</a>
+	    </h1>
+	    
+		{% render_tag_menu %}
+	</aside>
+	<main class="col-xs-12 col-sm-9">{% block blog_content %}{% endblock %}</main>
+{% endblock %}
+
+{% block interest_menu %}{% endblock %}

@@ -13,6 +13,14 @@ class PostListView(ListView):
     model = Post
 
 
+class TagPostListView(ListView):
+    model = Post
+    
+    def get_queryset(self):
+        tag_slug = self.kwargs["slug"]
+        return Post.objects.published().filter(tags__slug=tag_slug)
+
+
 class PostDetailView(DetailView):
     model = Post
 

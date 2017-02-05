@@ -10,17 +10,17 @@ import ckeditor.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('filer', '0002_auto_20150606_2003'),
+        ('filer', '0007_auto_20161016_1055'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='Content',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('text', ckeditor.fields.RichTextField(verbose_name='Text', blank=True)),
-                ('order', models.SmallIntegerField(default=0, verbose_name='Order')),
-                ('image', filer.fields.image.FilerImageField(verbose_name='Image', blank=True, to='filer.Image', null=True)),
+                ('order', models.SmallIntegerField(verbose_name='Order', default=0)),
+                ('image', filer.fields.image.FilerImageField(to='filer.Image', blank=True, null=True, verbose_name='Image')),
             ],
             options={
                 'ordering': ['order'],
@@ -29,33 +29,34 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('published', models.BooleanField(default=True, verbose_name='Published')),
-                ('title', models.CharField(max_length=200, verbose_name='Title')),
-                ('slug', models.SlugField(max_length=200, verbose_name='Slug')),
-                ('date_created', models.DateField(default=datetime.date.today, verbose_name='Date Created')),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
+                ('published', models.BooleanField(verbose_name='Published', default=True)),
+                ('title', models.CharField(verbose_name='Title', max_length=200)),
+                ('slug', models.SlugField(verbose_name='Slug', max_length=200, unique=True)),
+                ('date_created', models.DateField(verbose_name='Date Created', default=datetime.date.today)),
             ],
             options={
-                'ordering': ['date_created'],
                 'verbose_name': 'Post',
                 'verbose_name_plural': 'Posts',
+                'ordering': ['-date_created'],
             },
         ),
         migrations.CreateModel(
             name='Tag',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('name', models.CharField(max_length=20)),
+                ('slug', models.SlugField(unique=True, max_length=20)),
             ],
         ),
         migrations.AddField(
             model_name='post',
             name='tags',
-            field=models.ManyToManyField(related_name='posts', verbose_name='Tags', to='blog.Tag', blank=True),
+            field=models.ManyToManyField(verbose_name='Tags', related_name='posts', blank=True, to='blog.Tag'),
         ),
         migrations.AddField(
             model_name='content',
             name='post',
-            field=models.ForeignKey(related_name='content', to='blog.Post'),
+            field=models.ForeignKey(to='blog.Post', related_name='content'),
         ),
     ]

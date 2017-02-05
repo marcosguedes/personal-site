@@ -26,6 +26,6 @@ def render_microformat(context):
 
 @register.inclusion_tag('randomfunctionalities/networking.html', takes_context=True)
 def render_networking(context):
-    context['object_list'] = Network.objects.all()
+    context['network_list'] = Network.objects.all()
 
     return context

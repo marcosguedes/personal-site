@@ -4,6 +4,7 @@ from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
 from django.core.urlresolvers import reverse
 import datetime
+from django.utils.text import slugify
 
 class PostManager(models.Manager):
     use_for_related_fields = True
@@ -14,6 +15,10 @@ class PostManager(models.Manager):
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=20, unique=True)
+
+    class Meta:
+        ordering = ['name',]
 
     def __str__(self):
         return self.name
@@ -21,10 +26,14 @@ class Tag(models.Model):
     def get_related_posts(self):
         return self.posts.published()
 
+    def get_absolute_url(self):
+        return reverse("blog:tag_post_list", kwargs = {"slug": self.slug})
+
 class Post(models.Model):
     published = models.BooleanField(verbose_name=_(u"Published"), default=True)
     title = models.CharField(verbose_name=_(u"Title"), max_length=200)
     slug = models.SlugField(verbose_name=_(u"Slug"), max_length=200, unique=True)
+    lead = models.TextField(verbose_name=_(u"Lead"), blank=True)
     date_created = models.DateField(verbose_name=_(u"Date Created"), default=datetime.date.today)
     tags = models.ManyToManyField(Tag, verbose_name=_(u"Tags"), blank=True, related_name="posts")
 
@@ -44,8 +53,8 @@ class Post(models.Model):
     def get_content(self):
         return self.content.all()
     
-    # def get_absolute_url(self):
-    #     return reverse()
+    def get_absolute_url(self):
+        return reverse("blog:post_detail", kwargs={"slug": self.slug})
 
 
 class Content(models.Model):

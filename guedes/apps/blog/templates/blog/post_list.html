@@ -1,0 +1,15 @@
+{% extends "blog/blog_base.html" %}
+{% load i18n %}
+
+{% block blog_content %}
+	<ul>
+	{% for post in object_list %}
+		<li>
+			<a href="{{ post.get_absolute_url }}">
+				{% include "blog/partials/post_header.html" with object=post %}
+			</a>
+			{% if not forloop.last %}<hr />{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

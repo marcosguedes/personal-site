@@ -12,6 +12,12 @@ ul, li
 h1
     margin-top: 0
 
+a
+    transition: all 0.3s ease 0s
+
+img
+    max-width: 100%
+
 .container
     padding-top: $gutter * 2
     background-color: rgba(255, 255, 255, 0.8)
@@ -99,3 +105,44 @@ h1
 
     &.active
         height: 400px
+
+
+.blog aside
+    a.back-home
+        display: inline-block
+        margin-bottom: $gutter
+
+    a.back-blog
+        +fontLight()
+        float: right
+        display: none
+        line-height: 18px
+        
+        +breakpoint(xs-max)
+            display: inline-block
+    .dropdown-toggle
+        display: none
+        
+        +breakpoint(xs-max)
+            display: inline-block
+        
+
+    h1
+        +fontMedium(18px)
+        margin-bottom: $grid-gutter-width
+    li
+        margin-bottom: ($grid-gutter-width / 2)
+
+    a.btn
+        display: block
+        text-align: left
+
+.article-header
+    h1
+        +fontMedium(22px)
+    
+    .label
+        margin-right: ($grid-gutter-width / 2)
+        
+        &.last
+            margin-right: 0

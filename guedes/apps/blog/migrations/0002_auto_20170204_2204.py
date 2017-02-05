@@ -11,9 +11,13 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.AlterModelOptions(
+            name='tag',
+            options={'ordering': ['name']},
+        ),
+        migrations.AddField(
             model_name='post',
-            name='slug',
-            field=models.SlugField(verbose_name='Slug', max_length=200, unique=True),
+            name='lead',
+            field=models.TextField(verbose_name='Lead', blank=True),
         ),
     ]
