@@ -5,11 +5,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 import logging
 from aboutme.models import Category
+from bakery.views.detail import BuildableDetailView
 
 log = logging.getLogger(__name__)
 
 
-class HomePageView(DetailView):
+class HomePageView(BuildableDetailView):
     model = HomePage
     template_name = "index.html"
 

@@ -5,15 +5,17 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 import logging
 from .models import Post
+from bakery.views.list import BuildableListView
+from bakery.views.detail import BuildableDetailView
 
 log = logging.getLogger(__name__)
 
 
-class PostListView(ListView):
+class PostListView(BuildableListView):
     model = Post
 
 
-class TagPostListView(ListView):
+class TagPostListView(BuildableListView):
     model = Post
     
     def get_queryset(self):
@@ -21,7 +23,7 @@ class TagPostListView(ListView):
         return Post.objects.published().filter(tags__slug=tag_slug)
 
 
-class PostDetailView(DetailView):
+class PostDetailView(BuildableDetailView):
     model = Post
 
     def get(self, request, *args, **kwargs):

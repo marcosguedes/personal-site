@@ -19,5 +19,7 @@ media/
 backups/
 *~
 *.komodoproject
-/guedes/guedes/settings/92-local_settings_devel.conf.py
-/guedes/logs/
+92-local_settings_devel.conf.py
+logs/
+build/
+database.db

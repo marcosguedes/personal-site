@@ -75,6 +75,7 @@ MEDIA_URL = '/media/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/queo.pt/static/"
 STATIC_ROOT = os.path.join(PROJECT_PATH, '../static/')
+BUILD_DIR = os.path.join(PROJECT_PATH, '../build/')
 
 # URL prefix for static files.
 # Example: "http://queo.pt/static/"
@@ -158,9 +159,10 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'solo',
+    'bakery',
     
     'aboutme',
-    'blog',
+    # 'blog',  # TODO
     'personalsite',
     'cookiedisclaimer',
     'randomfunctionalities',
@@ -168,6 +170,14 @@ INSTALLED_APPS = [
 
 
 APPEND_SLASH = True
+
+BAKERY_VIEWS = [
+    'personalsite.views.HomePageView',
+    'aboutme.views.InterestDetailView',
+    # 'blog.views.PostListView',  # TODO
+    # 'blog.views.TagPostListView',  # TODO
+    # 'blog.views.PostDetailView',  # TODO
+]
 
 # Silences Deprecation warning about GoogleAnalytics Site unique foreignKey
 SILENCED_SYSTEM_CHECKS = ["fields.W342"]

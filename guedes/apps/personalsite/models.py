@@ -10,3 +10,6 @@ class HomePage(SingletonModel):
     # meta_description = models.CharField(max_length=300, blank=True)
     picture = FilerImageField(blank=True, null=True)  # django-solo required FilerImage to be null
     text = RichTextField(config_name='default')
+
+    def get_absolute_url(self):
+        return '/'  # needed for bakery

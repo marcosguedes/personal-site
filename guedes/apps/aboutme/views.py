@@ -4,18 +4,14 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 import logging
 from .models import Interest
+from bakery.views.detail import BuildableDetailView
 
 log = logging.getLogger(__name__)
 
 
-class InterestDetailView(DetailView):
+class InterestDetailView(BuildableDetailView):
     model = Interest
 
-    def get(self, request, *args, **kwargs):
-        try:
-            self.model.objects.get(slug=kwargs['slug'], active=True)           
-            return super(InterestDetailView, self).get(request, **kwargs)
-        except ObjectDoesNotExist:
-            # https://realpython.com/blog/python/the-most-diabolical-python-antipattern
-            log.error('Interest does not exist!')
-            raise Http404
+    def get_queryset(self):
+        qs = super(InterestDetailView, self).get_queryset()
+        return qs.filter(active=True)
