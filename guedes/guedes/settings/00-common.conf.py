@@ -112,6 +112,7 @@ TEMPLATES = [{
                                        'django.template.context_processors.static',
                                        'django.template.context_processors.request',
                                        'guedes.context_processors.is_debug',
+                                       'personalsite.context_processors.site',
                                        'sekizai.context_processors.sekizai',
                                        ],
                 'loaders': [('django.template.loaders.cached.Loader', ['django.template.loaders.filesystem.Loader',

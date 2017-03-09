@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 
 {% load sekizai_tags about_tags thumbnail i18n %}
 
-{% block head_title %}{{object.page_title}}{% endblock %}
+{% block head_title %}{{object.title}} | {{ site.page_title }}{% endblock %}
 
 {% block content_detail %}
     {% if object.image %}
