@@ -5,6 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 import logging
 from aboutme.models import Category
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 log = logging.getLogger(__name__)
 
@@ -12,6 +14,10 @@ log = logging.getLogger(__name__)
 class HomePageView(DetailView):
     model = HomePage
     template_name = "index.html"
+    
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super(HomePageView,self).dispatch(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
         try:

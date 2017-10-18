@@ -1,4 +1,5 @@
 from django.conf import settings # import the settings file
+from django.contrib.sites.models import Site
 
 def is_debug(request):
     """
@@ -7,3 +8,6 @@ def is_debug(request):
     
     """
     return {'is_DEBUG': settings.DEBUG}
+
+def site(request):
+    return {'site': Site.objects.get_current()}

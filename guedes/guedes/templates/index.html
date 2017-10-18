@@ -4,13 +4,17 @@
 
 {% block head_title %}{{object.page_title}}{% endblock %}
 
+{% block details_class %}col-sm-10 col-sm-offset-1{% endblock %}
+
 {% block content_detail %}
     {% if object.picture %}
     <div class="profile-image">
         <img src="{% thumbnail object.picture 380x0 upscale %}" alt="" />
     </div>
-    {% endif %}
     <div class="text">
         {{ object.text|safe }}
     </div>
+    {% else %}
+        {{ object.text|safe }}
+    {% endif %}
 {% endblock %}

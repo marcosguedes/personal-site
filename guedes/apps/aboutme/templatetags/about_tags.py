@@ -9,14 +9,9 @@ register = template.Library()
 @register.inclusion_tag('aboutme/partials/interests.html', takes_context=True)
 def show_interest_masonry(context):
     interests = Interest.objects.active().filter(category__active=True)
-    interest_list = []
-    categories = []
+    categories = Category.objects.filter(id__in=interests.values_list('category', flat=True).distinct())
 
-    [interest_list.append(interest) for interest in interests]
-    interest_categories = interests.values_list('category').distinct()
-    categories = Category.objects.filter(id__in=interest_categories)
-
-    context['interest_list'] = interest_list
+    context['interests'] = interests
     context['categories'] = categories
 
     return context
