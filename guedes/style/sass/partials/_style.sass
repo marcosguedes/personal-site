@@ -73,10 +73,10 @@ img
     @extend .col-sm-3
     @extend .col-md-2
     margin-bottom: $gutter
-    +opacity(0.8)
+    +opacity(0.4)
     +transition(0.1s opacity)
 
-    &:hover
+    &:hover, &.active
         +opacity(1)
 
     a
@@ -96,6 +96,7 @@ img
     padding: ($gutter / 2)
     display: table-cell
     color: $white
+    text-shadow: 0px 2px 2px rgb(0, 0, 0)
 
 .item-content
     top: 0
