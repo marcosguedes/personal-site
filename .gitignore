@@ -23,3 +23,5 @@ backups/
 logs/
 build/
 database.db
+/guedes.zip
+/guedes/db_settings.zip
