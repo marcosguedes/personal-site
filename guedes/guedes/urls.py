@@ -15,6 +15,7 @@ urlpatterns = patterns('',
                             url(r'^blog/', include('blog.urls', namespace='blog')),
                             (r'^ckeditor/', include('ckeditor_uploader.urls')),
                             url(r'^interest/', include('aboutme.urls')),
+                            url(r'^filer/', include('filer.urls')),
                             url(r'^', include('personalsite.urls')),
                             )
 

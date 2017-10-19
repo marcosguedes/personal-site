@@ -6,6 +6,7 @@ from django.http import Http404
 import logging
 from aboutme.models import Category
 from bakery.views.detail import BuildableDetailView
+from django.views.decorators.csrf import csrf_exempt
 
 log = logging.getLogger(__name__)
 
@@ -13,6 +14,10 @@ log = logging.getLogger(__name__)
 class HomePageView(BuildableDetailView):
     model = HomePage
     template_name = "index.html"
+
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super(HomePageView,self).dispatch(request, *args, **kwargs)
 
     def get_object(self, queryset=None):
         try:

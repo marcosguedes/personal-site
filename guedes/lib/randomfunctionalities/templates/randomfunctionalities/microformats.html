@@ -3,7 +3,7 @@
 
 <section style="display: none; z-index: -1000; visibility: hidden; " itemscope itemtype="http://schema.org/Person">
     <h1 itemprop="name">{{mformat.name}}</h1>
-    <img itemprop="image" src="{% thumbnail mformat.thumb 100x100 upscale crop %}">
+    <img itemprop="image" src="{{ site.domain }}{% thumbnail mformat.thumb 100x100 upscale crop %}">
     <meta itemprop="description" content="{{mformat.description}}">
     <div itemscope itemtype="http://schema.org/Organization">
         <span itemprop="name">{{mformat.workplace}}</span>

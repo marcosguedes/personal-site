@@ -1,35 +1,50 @@
 <!DOCTYPE html>
-{% load sekizai_tags i18n about_tags disclaimer_tags functionality_tags cache %}
+{% load sekizai_tags i18n about_tags disclaimer_tags functionality_tags cache thumbnail %}
+{% get_microformat as microformat %}
 <html>
 	<head>
-		<title>{% block head_title %}{% endblock %}</title>
-		<meta name="viewport" content="initial-scale=1">
-		{% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
-		{% addtoblock "css" %}
-        <link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
-        <link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
-        <link href="{{ STATIC_URL }}site/css/fontello/fontello-embedded.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
-        <link href="{{ STATIC_URL }}site/css/fontello/fontello-ie7-codes.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
-        <link href="{{ STATIC_URL }}site/css/fontello/fontello-ie7.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
-        <link href="{{ STATIC_URL }}site/css/fontello/fontello.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
+        <title>{% block head_title %}{{ microformat.title }}{% endblock %}</title>
 
-		<link href="{{ STATIC_URL }}site/css/print.css" media="print" rel="stylesheet" type="text/css" />
-		<!--[if IE]>
-		<link href="{{ STATIC_URL }}site/css/ie.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
-		<![endif]-->
-        <link href="{{ STATIC_URL }}site/css/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css" />
-		{% endaddtoblock %}
+		<meta name="viewport" content="initial-scale=1">
+        <meta property="og:title"        content="{% block opengraph_title %}{{ microformat.title }}{% endblock %}"/>
+        <meta property="og:image"        content="{% block opengraph_image %}{% if microformat.thumb %}{{ site.domain }}{% thumbnail microformat.thumb 1200x630 upscale crop subject_location=microformat.thumb.subject_location %}{% endif %}{% endblock %}" />
+        <meta property="og:description"  content="{% block opengraph_description %}{% if microformat.description %}{{ microformat.description }}{% endif %}{% endblock %}" />
+        <meta name="twitter:title"       content="{% block twitter_title %}{{ microformat.title }}{% endblock %}" />
+        <meta name="twitter:image"       content="{% block twitter_image %}{% if microformat.thumb %}{{ site.domain }}{% thumbnail microformat.thumb 1200x630 upscale crop subject_location=microformat.thumb.subject_location %}{% endif %}{% endblock %}" />
+        <meta name="twitter:description" content="{% block twitter_description %}{% if microformat.description %}{{ microformat.description }}{% endif %}{% endblock %}" />
+        <meta property="og:image:width"  content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta property="og:type"         content="website" />
+        <meta property="og:url"          content="{{ request.build_absolute_uri }}" />
+        <meta property="og:locale"       content="pt" />
+        <meta name="twitter:card"        content="summary">
+        <meta name="twitter:url"         content="{{ request.build_absolute_uri }}">
+		{% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/fontello-embedded.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/fontello-ie7-codes.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/fontello-ie7.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/fontello.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/print.css" media="print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+        <!--[if IE]>
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/ie.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+        <![endif]-->
+        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+
 	</head>
 	<body class="{% block bodyclass %}{% endblock %}">{% spaceless %}{% render_microformat %}{% show_disclaimer %}
-	    {% render_networking %}
+        {% render_networking %}
         <div class="image-background"><div class="image-credits"><small>Background image courtesy of: <a href="http://www.freepik.com/free-vector/blue-polygonal-background_758582.htm">Freepik</a></small></div></div>
 
         {% block content %}
             <div class="container">
                 <div class="inner-container">
-                    <div class="details">{% block content_detail %}{% endblock %}</div>
+                    <div class="details {% block details_class %}{% endblock %}">{% block content_detail %}{% endblock %}</div>
                     {% block interest_menu %}
-                        <div class="col-xs-12 col-sm-11 col-sm-offset-1">
+                        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                             <h1>{% trans "About Me" %}</h1>
                         </div>
                         {% show_interest_masonry %}
@@ -39,12 +54,12 @@
         {% endblock %}
 
 
-	{% endspaceless %}
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	{% addtoblock "js" %}
-	<script src="{{ STATIC_URL }}site/js/jquery/bootstrap.min.js"></script>
-	<script src="{{ STATIC_URL }}site/js/main.js"></script>
-	{% endaddtoblock %}
-	{% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}
-	</body>
+    {% endspaceless %}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    {% addtoblock "js" %}
+    <script src="{{ STATIC_URL }}site/js/jquery/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}site/js/main.js"></script>
+    {% endaddtoblock %}
+    {% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}
+    </body>
 </html>
