@@ -148,13 +148,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'flat',
     'django.contrib.admin',
 
     'compressor',
     'sekizai',
     'robots',
-    'colorful',
     'easy_thumbnails',
     'filer',
     'ckeditor',
@@ -162,8 +160,8 @@ INSTALLED_APPS = [
     'solo',
     'bakery',
     
-    'aboutme',
-    # 'blog',  # TODO
+    # 'aboutme',
+    'blog',  # TODO
     'personalsite',
     'cookiedisclaimer',
     'randomfunctionalities',

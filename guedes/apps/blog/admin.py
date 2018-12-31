@@ -1,13 +1,7 @@
 from django.contrib import admin
-from .models import Tag, Post, Content
-
-
-class ContentInlineAdmin(admin.TabularInline):
-    model = Content
-    extra = 3
+from .models import Tag, Post
 
 class PostAdmin(admin.ModelAdmin):
-    inlines = [ContentInlineAdmin]
     list_display = ['title', 'date_created', 'published']
     list_editable = ['date_created', 'published']
     list_filter = ['tags']

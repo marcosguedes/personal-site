@@ -4,7 +4,6 @@ from django.views.generic.detail import DetailView
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 import logging
-from aboutme.models import Category
 from bakery.views.detail import BuildableDetailView
 from django.views.decorators.csrf import csrf_exempt
 
@@ -21,14 +20,11 @@ class HomePageView(BuildableDetailView):
 
     def get_object(self, queryset=None):
         try:
-            return HomePage.objects.get()
+            return HomePage.get_solo()
         except ObjectDoesNotExist:
-            # https://realpython.com/blog/python/the-most-diabolical-python-antipattern
-            log.error('Homepage not created!')
             raise Http404
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        context['categories'] = Category.objects.filter(active=True)
 
         return context

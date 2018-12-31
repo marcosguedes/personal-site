@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load sekizai_tags i18n about_tags disclaimer_tags functionality_tags cache thumbnail %}
+{% load sekizai_tags i18n disclaimer_tags functionality_tags cache thumbnail %}
 {% get_microformat as microformat %}
 <html>
 	<head>
@@ -35,31 +35,29 @@
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
 
 	</head>
-	<body class="{% block bodyclass %}{% endblock %}">{% spaceless %}{% render_microformat %}{% show_disclaimer %}
+	<body class="{% block bodyclass %}{% endblock %}">{% spaceless %}{% render_microformat %}
         {% render_networking %}
-        <div class="image-background"><div class="image-credits"><small>Background image courtesy of: <a href="http://www.freepik.com/free-vector/blue-polygonal-background_758582.htm">Freepik</a></small></div></div>
+        <div class="image-background">
+            <div class="image-credits">
+                <small>Background image courtesy of: <a href="http://www.freepik.com/free-vector/blue-polygonal-background_758582.htm">Freepik</a></small>
+               {% block license %}{% endblock %}
+            </div>
+        </div>
 
         {% block content %}
             <div class="container">
                 <div class="inner-container">
                     <div class="details {% block details_class %}{% endblock %}">{% block content_detail %}{% endblock %}</div>
-                    {% block interest_menu %}
-                        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                            <h1>{% trans "About Me" %}</h1>
-                        </div>
-                        {% show_interest_masonry %}
-                    {% endblock %}
                 </div>
             </div>
         {% endblock %}
 
-
+    {% show_disclaimer %}
     {% endspaceless %}
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    {% addtoblock "js" %}
-    <script src="{{ STATIC_URL }}site/js/jquery/bootstrap.min.js"></script>
-    <script src="{{ STATIC_URL }}site/js/main.js"></script>
-    {% endaddtoblock %}
+    {% addtoblock "js" %}<script src="{{ STATIC_URL }}site/js/jquery/bootstrap.min.js"></script>{% endaddtoblock %}
+    {% addtoblock "js" %}<script src="{{ STATIC_URL }}site/js/main.js"></script>{% endaddtoblock %}
+
     {% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}
     </body>
 </html>

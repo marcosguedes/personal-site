@@ -7,8 +7,8 @@
 <div id="warning-container">
     <div id="cookie-warning">
         <p>{{ disclaimer.text|linebreaksbr }}</p>
-        <a class="close-warning" href="">{% trans "Nice bamboozle. Cheers!" %}</a>
-        <a class="exit" href="http://livepuppycam.com/">{% trans "0/10 no https. Let me out" %}</a>
+        <a class="close-warning" href="">{{ disclaimer.accept_text }}</a>
+        <a class="exit" href="{{ disclaimer.back_url }}">{{ disclaimer.decline_text }}</a>
     </div>
 </div>
 {% endif %}

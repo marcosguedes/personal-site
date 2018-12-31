@@ -5,6 +5,7 @@ from filer.fields.image import FilerImageField
 from django.core.urlresolvers import reverse
 import datetime
 from django.utils.text import slugify
+from django.utils import timezone
 
 class PostManager(models.Manager):
     use_for_related_fields = True
@@ -34,7 +35,7 @@ class Post(models.Model):
     title = models.CharField(verbose_name=_(u"Title"), max_length=200)
     slug = models.SlugField(verbose_name=_(u"Slug"), max_length=200, unique=True)
     lead = models.TextField(verbose_name=_(u"Lead"), blank=True)
-    date_created = models.DateField(verbose_name=_(u"Date Created"), default=datetime.date.today)
+    date_created = models.DateField(verbose_name=_(u"Date Created"), default=timezone.now)
     tags = models.ManyToManyField(Tag, verbose_name=_(u"Tags"), blank=True, related_name="posts")
 
     objects = PostManager()
@@ -50,18 +51,5 @@ class Post(models.Model):
     def get_tags(self):
         return self.tags.all()
 
-    def get_content(self):
-        return self.content.all()
-    
     def get_absolute_url(self):
         return reverse("blog:post_detail", kwargs={"slug": self.slug})
-
-
-class Content(models.Model):
-    post = models.ForeignKey(Post, related_name="content")
-    image = FilerImageField(verbose_name=_(u"Image"), blank=True, null=True)
-    text = RichTextField(verbose_name=_(u"Text"), blank=True)
-    order = models.SmallIntegerField(verbose_name=_(u"Order"), default=0)
-
-    class Meta:
-        ordering = ['order']

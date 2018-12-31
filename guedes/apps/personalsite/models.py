@@ -6,7 +6,7 @@ from solo.models import SingletonModel
 
 
 class HomePage(SingletonModel):
-    page_title = models.CharField(max_length=300)
+    page_title = models.CharField(max_length=300, default='Marcos Guedes')
     # meta_description = models.CharField(max_length=300, blank=True)
     picture = FilerImageField(blank=True, null=True)  # django-solo required FilerImage to be null
     text = RichTextField(config_name='default')

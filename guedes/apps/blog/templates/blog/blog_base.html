@@ -11,13 +11,20 @@
 	<aside class="col-xs-12 col-sm-3 pull-">
 		{% if config.picture %}<a href="/" class="back-home hidden-xs"><img src="{% thumbnail config.picture 380x0 upscale %}" alt="{{ config.page_title }} {% trans "Blog" %}" /></a>{% endif %}
 	    <h1>
-	    	<a href="{% url 'blog:post_list' %}" class="back-home">{{ config.page_title }} {% trans "Blog" %}</a>
 	    	<a href="/" class="back-blog">{% trans "Back to Home" %}</a>
 	    </h1>
-	    
-		{% render_tag_menu %}
 	</aside>
-	<main class="col-xs-12 col-sm-9">{% block blog_content %}{% endblock %}</main>
+	<main class="col-xs-12 col-sm-9">
+	   {% block blog_content %}{% endblock %}
+   </main>
 {% endblock %}
 
-{% block interest_menu %}{% endblock %}
+{% block license %}
+    <br/>
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+    </a><br />
+    <small>This work is licensed under a<br/><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</small>
+{% endblock %}
+            
+            

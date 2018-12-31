@@ -7,30 +7,30 @@ import logging
 from .models import Post
 from bakery.views.list import BuildableListView
 from bakery.views.detail import BuildableDetailView
+from django.shortcuts import get_object_or_404
 
 log = logging.getLogger(__name__)
 
 
 class PostListView(BuildableListView):
     model = Post
+    queryset = Post.objects.published()
 
 
 class TagPostListView(BuildableListView):
     model = Post
-    
+    queryset = Post.objects.published()
+
     def get_queryset(self):
         tag_slug = self.kwargs["slug"]
-        return Post.objects.published().filter(tags__slug=tag_slug)
+        return self.queryset.filter(tags__slug=tag_slug)
 
 
 class PostDetailView(BuildableDetailView):
     model = Post
-
-    def get(self, request, *args, **kwargs):
-        try:
-            self.model.objects.get(slug=kwargs['slug'], published=True)           
-            return super(PostDetailView, self).get(request, **kwargs)
-        except ObjectDoesNotExist:
-            # https://realpython.com/blog/python/the-most-diabolical-python-antipattern
-            log.error("Post doesn't exist or is unpublished")
-            raise Http404
+   
+    def get_object(self, queryset=None):
+        obj = super().get_object()
+        if obj.published:
+            return obj
+        raise Http404()
