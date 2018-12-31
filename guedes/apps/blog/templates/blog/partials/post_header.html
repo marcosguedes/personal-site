@@ -1,12 +1,12 @@
 {% load i18n %}
 
 <div class="article-header">
-	<h1>{{ object.title }}</h1>
-	{% if object.lead %}<p>{{ object.lead|linebreaksbr }}</p>{% endif %}
+	<h3>{{ object.title }} <a href="{{ post.get_absolute_url }}">#</a></h3>
+	{% if object.text %}<p>{{ object.text|linebreaksbr }}</p>{% endif %}
 	<div>
-		<span class="badge">{% trans "Posted on" %} {{ object.date_created|date:"Y/m/d" }}</span>
-		<div class="pull-right">
-			{% for tag in object.get_tags %}<a href="{{ tag.get_absolute_url }}" class="label label-default{% if forloop.last %} last{% endif %}">{{ tag }}</a>{% endfor %}
-		</div>
+		<span class="badge">{% trans "Posted on" %} {{ object.date_created|date:"Y/m/d @ H:m" }}</span>
 	</div>
+    <div><small>
+        {% trans "Filed under" %} {% for tag in object.get_tags %}<a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+    </small></div>
 </div>

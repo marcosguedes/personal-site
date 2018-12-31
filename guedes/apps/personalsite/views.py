@@ -1,30 +1,32 @@
 # -*- encoding: utf-8 -*-
-from .models import HomePage
-from django.views.generic.detail import DetailView
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import Http404
+from .models import AboutPage, HomePage
 import logging
 from bakery.views.detail import BuildableDetailView
-from django.views.decorators.csrf import csrf_exempt
+from blog.models import Post
 
 log = logging.getLogger(__name__)
 
 
 class HomePageView(BuildableDetailView):
-    model = HomePage
     template_name = "index.html"
-
-    @csrf_exempt
-    def dispatch(self, request, *args, **kwargs):
-        return super(HomePageView,self).dispatch(request, *args, **kwargs)
+    model = HomePage
 
     def get_object(self, queryset=None):
-        try:
-            return HomePage.get_solo()
-        except ObjectDoesNotExist:
-            raise Http404
+        return HomePage.get_solo()
 
     def get_context_data(self, **kwargs):
-        context = super(HomePageView, self).get_context_data(**kwargs)
-
+        context = super().get_context_data(**kwargs)
+        context["posts"] = Post.objects.published()[:10]
+        if Post.objects.published().count() > 10:
+            context["load_posts"] = True
         return context
+
+
+class AboutPageView(BuildableDetailView):
+    model = AboutPage
+    template_name = "about.html"
+    build_path = "about.html"
+
+    def get_object(self, queryset=None):
+        return AboutPage.get_solo()
+

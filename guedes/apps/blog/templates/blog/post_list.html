@@ -1,15 +1,16 @@
 {% extends "blog/blog_base.html" %}
 {% load i18n %}
 
-{% block blog_content %}asd
-	<ul>
-	{% for post in object_list %}
-		<li>
-			<a href="{{ post.get_absolute_url }}">
-				{% include "blog/partials/post_header.html" with object=post %}
-			</a>
-			{% if not forloop.last %}<hr />{% endif %}
-		</li>
-	{% endfor %}
-	</ul>
+{% block content_detail %}
+
+    <h1>{% if object %}Filtering posts by "{{ object }}"{% else %}Latest Posts{% endif %}</h1>
+
+    <ul class="posts">
+    {% for post in object_list %}
+        <li>
+          {% include "blog/partials/post_header.html" with object=post %}
+          {% if not forloop.last %}<hr />{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
 {% endblock %}

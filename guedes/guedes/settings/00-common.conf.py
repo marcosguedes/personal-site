@@ -181,10 +181,11 @@ APPEND_SLASH = True
 
 BAKERY_VIEWS = [
     'personalsite.views.HomePageView',
-    'aboutme.views.InterestDetailView',
-    # 'blog.views.PostListView',  # TODO
-    # 'blog.views.TagPostListView',  # TODO
-    # 'blog.views.PostDetailView',  # TODO
+    'personalsite.views.AboutPageView',
+    # 'aboutme.views.InterestDetailView',
+    'blog.views.PostListView',
+    'blog.views.TagPostListView',
+    'blog.views.PostDetailView',
 ]
 
 # Silences Deprecation warning about GoogleAnalytics Site unique foreignKey

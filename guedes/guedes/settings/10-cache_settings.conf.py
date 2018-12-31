@@ -14,7 +14,7 @@ if True:
     }
 
     CACHE_MIDDLEWARE_KEY_PREFIX = "guedes_"
-    CACHE_MIDDLEWARE_SECONDS = 60
+    CACHE_MIDDLEWARE_SECONDS = 0
     try:
         from django.core.cache import cache
         cache.clear()

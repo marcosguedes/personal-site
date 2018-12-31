@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^filer/', include('filer.urls')),
-    url(r'^', include('personalsite.urls')),
+    url(r'^', include('personalsite.urls', namespace='page')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

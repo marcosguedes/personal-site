@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 import datetime
 from django.utils.text import slugify
 from django.utils import timezone
+from bakery.models import BuildableModel
 
 class PostManager(models.Manager):
     use_for_related_fields = True
@@ -14,7 +15,8 @@ class PostManager(models.Manager):
         return super(PostManager, self).filter(published=True)
 
 
-class Tag(models.Model):
+class Tag(BuildableModel):
+    detail_views = ('blog.views.TagPostListView',)
     name = models.CharField(max_length=20)
     slug = models.SlugField(max_length=20, unique=True)
 
@@ -30,12 +32,13 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse("blog:tag_post_list", kwargs = {"slug": self.slug})
 
-class Post(models.Model):
+class Post(BuildableModel):
+    detail_views = ('blog.views.PostDetailView',)
     published = models.BooleanField(verbose_name=_(u"Published"), default=True)
     title = models.CharField(verbose_name=_(u"Title"), max_length=200)
     slug = models.SlugField(verbose_name=_(u"Slug"), max_length=200, unique=True)
-    lead = models.TextField(verbose_name=_(u"Lead"), blank=True)
-    date_created = models.DateField(verbose_name=_(u"Date Created"), default=timezone.now)
+    text = models.TextField(verbose_name=_(u"Text"))
+    date_created = models.DateTimeField(verbose_name=_(u"Date Created"), default=timezone.now)
     tags = models.ManyToManyField(Tag, verbose_name=_(u"Tags"), blank=True, related_name="posts")
 
     objects = PostManager()

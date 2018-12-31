@@ -1,10 +1,7 @@
 # -*- encoding: utf-8 -*-
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 import logging
-from .models import Post
+from .models import Post, Tag
 from bakery.views.list import BuildableListView
 from bakery.views.detail import BuildableDetailView
 from django.shortcuts import get_object_or_404
@@ -15,19 +12,26 @@ log = logging.getLogger(__name__)
 class PostListView(BuildableListView):
     model = Post
     queryset = Post.objects.published()
+    build_path = "blog/post_list.html"
 
 
-class TagPostListView(BuildableListView):
-    model = Post
-    queryset = Post.objects.published()
+class TagPostListView(BuildableDetailView):
+    model = Tag
+    # queryset = Post.objects.published()
+    build_path = "blog/post_tag_list.html"
+    template_name = "blog/post_list.html"
 
-    def get_queryset(self):
-        tag_slug = self.kwargs["slug"]
-        return self.queryset.filter(tags__slug=tag_slug)
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        obj = get_object_or_404(self.model, slug=self.kwargs["slug"])
+        ctx["object"] = obj
+        ctx["object_list"] = obj.get_related_posts()
+        return ctx
 
 
 class PostDetailView(BuildableDetailView):
     model = Post
+    build_path = "blog/post_detail.html"
    
     def get_object(self, queryset=None):
         obj = super().get_object()

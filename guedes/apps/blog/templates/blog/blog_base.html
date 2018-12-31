@@ -2,22 +2,11 @@
 
 {% load sekizai_tags blog_tags thumbnail i18n solo_tags %}
 
-{% block head_title %}{% get_solo 'personalsite.HomePage' as config %}{{ config.page_title }} {% trans "Blog" %}{% endblock %}
+{% block head_title %}{% trans "Blog" %} | {{ block.super }}{% endblock %}
+
+{% block nav_blog_class %}class="active"{% endblock %}
 
 {% block bodyclass %}blog{% endblock %}
-
-{% block content_detail %}
-    {% get_solo 'personalsite.HomePage' as config %}
-	<aside class="col-xs-12 col-sm-3 pull-">
-		{% if config.picture %}<a href="/" class="back-home hidden-xs"><img src="{% thumbnail config.picture 380x0 upscale %}" alt="{{ config.page_title }} {% trans "Blog" %}" /></a>{% endif %}
-	    <h1>
-	    	<a href="/" class="back-blog">{% trans "Back to Home" %}</a>
-	    </h1>
-	</aside>
-	<main class="col-xs-12 col-sm-9">
-	   {% block blog_content %}{% endblock %}
-   </main>
-{% endblock %}
 
 {% block license %}
     <br/>
@@ -26,5 +15,3 @@
     </a><br />
     <small>This work is licensed under a<br/><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</small>
 {% endblock %}
-            
-            

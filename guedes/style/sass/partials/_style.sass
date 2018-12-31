@@ -9,7 +9,7 @@ ul, li
     list-style-type: none
     padding: 0
 
-h1
+h1, h2
     margin-top: 0
 
 a
@@ -18,9 +18,38 @@ a
 img
     max-width: 100%
 
-.container
+.main
     padding-top: $gutter * 2
-    background-color: rgba(255, 255, 255, 0.8)
+    background-color: $background
+
+.navigation
+    margin-top: $gutter
+
+.nav-tabs > li
+    text-transform: uppercase
+    font-weight: bold
+
+    > a
+        background-color: rgba(255, 255, 255, 0.6)
+    &.active > a,
+    &:hover > a
+        background-color: white
+
+    &:hover
+        border: 0
+
+// Reset Boostrap border styles
+.nav-tabs-justified
+
+    > li > a
+        border: 0
+
+    > li.active > a,
+    > li.active:hover > a
+        border: 0
+    
+    &:hover
+        border: 0
 
 .details
     margin-bottom: $gutter
@@ -55,19 +84,6 @@ img
 .text
     @extend .col-sm-6
 
-.masonry-filters
-    margin-top: $gutter
-    margin-bottom: $gutter
-
-    .filter
-        margin: 0 $half-gutter $half-gutter 0
-
-.masonry-container
-    @extend .col-sm-offset-1
-    @extend .col-sm-10
-
-.masonry
-    @extend .row
 
 .item
     @extend .col-xs-6
@@ -108,7 +124,6 @@ img
     &.active
         height: 400px
 
-
 .blog aside
     a.back-home
         display: inline-block
@@ -138,6 +153,9 @@ img
     a.btn
         display: block
         text-align: left
+
+.posts li
+    margin-bottom: $half-gutter
 
 .article-header
     h1

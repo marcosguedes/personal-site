@@ -1,0 +1,8 @@
+{% extends "blog/blog_base.html" %}
+{% load i18n %}
+
+{% block head_title %}{{ object.title }} | {{ block.super }}{% endblock %}
+
+{% block content_detail %}
+    {% include "blog/partials/post_header.html" %}
+{% endblock %}

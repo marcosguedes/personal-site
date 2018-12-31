@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load sekizai_tags thumbnail i18n %}
+
+{% block nav_about_class %}class="active"{% endblock %}
+
+{% block navigation_items %}
+    <li><a href="{% url 'page:home' %}">Home</a></li>
+    <li class="active"><a href="{% url 'page:about' %}">Abouta <span class="sr-only">(current)</span></a></li>
+{% endblock %}
+
+{% block content_detail %}
+    {% if object.picture %}
+    <div class="profile-image">
+        <img src="{% thumbnail object.picture 380x0 upscale %}" alt="" />
+    </div>
+    <div class="text">
+        {{ object.text|safe }}
+    </div>
+    {% else %}
+        {% if object.text %}{{ object.text|safe }}{% endif %}
+    {% endif %}
+{% endblock %}

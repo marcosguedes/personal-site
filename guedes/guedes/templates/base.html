@@ -2,15 +2,15 @@
 {% load sekizai_tags i18n disclaimer_tags functionality_tags cache thumbnail %}
 {% get_microformat as microformat %}
 <html>
-	<head>
-        <title>{% block head_title %}{{ microformat.title }}{% endblock %}</title>
+    <head>
+        <title>{% block head_title %}{{site.name}}{% endblock %}</title>
 
-		<meta name="viewport" content="initial-scale=1">
+        <meta name="viewport" content="initial-scale=1">
         <meta property="og:title"        content="{% block opengraph_title %}{{ microformat.title }}{% endblock %}"/>
-        <meta property="og:image"        content="{% block opengraph_image %}{% if microformat.thumb %}{{ site.domain }}{% thumbnail microformat.thumb 1200x630 upscale crop subject_location=microformat.thumb.subject_location %}{% endif %}{% endblock %}" />
+        <meta property="og:image"        content="{% block opengraph_image %}{% if microformat.thumb %}//{{ site.domain }}{% thumbnail microformat.thumb 1200x630 upscale crop subject_location=microformat.thumb.subject_location %}{% endif %}{% endblock %}" />
         <meta property="og:description"  content="{% block opengraph_description %}{% if microformat.description %}{{ microformat.description }}{% endif %}{% endblock %}" />
         <meta name="twitter:title"       content="{% block twitter_title %}{{ microformat.title }}{% endblock %}" />
-        <meta name="twitter:image"       content="{% block twitter_image %}{% if microformat.thumb %}{{ site.domain }}{% thumbnail microformat.thumb 1200x630 upscale crop subject_location=microformat.thumb.subject_location %}{% endif %}{% endblock %}" />
+        <meta name="twitter:image"       content="{% block twitter_image %}{% if microformat.thumb %}//{{ site.domain }}{% thumbnail microformat.thumb 1200x630 upscale crop subject_location=microformat.thumb.subject_location %}{% endif %}{% endblock %}" />
         <meta name="twitter:description" content="{% block twitter_description %}{% if microformat.description %}{{ microformat.description }}{% endif %}{% endblock %}" />
         <meta property="og:image:width"  content="1200" />
         <meta property="og:image:height" content="630" />
@@ -20,7 +20,7 @@
         <meta property="og:locale"       content="pt" />
         <meta name="twitter:card"        content="summary">
         <meta name="twitter:url"         content="{{ request.build_absolute_uri }}">
-		{% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
+        {% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/fontello-embedded.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
@@ -29,13 +29,10 @@
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/fontello.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
 
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/print.css" media="print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
-        <!--[if IE]>
-        {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/ie.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
-        <![endif]-->
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
 
-	</head>
-	<body class="{% block bodyclass %}{% endblock %}">{% spaceless %}{% render_microformat %}
+    </head>
+    <body class="{% block bodyclass %}{% endblock %}">{% spaceless %}{% render_microformat %}
         {% render_networking %}
         <div class="image-background">
             <div class="image-credits">
@@ -43,19 +40,29 @@
                {% block license %}{% endblock %}
             </div>
         </div>
+        <div class="container navigation">
+            <div class="row">
+                <ul class="nav nav-tabs nav-justified">
+                    {% block navigation %}
+                        <li {% block nav_home_class %}{% endblock %} role="navigation"><a href="{% url 'page:home' %}">Home</a></li>
+                        <li {% block nav_about_class %}{% endblock %} role="navigation"><a href="{% url 'page:about' %}">About</a></li>
+                        <li {% block nav_blog_class %}{% endblock %} role="navigation"><a href="{% url 'blog:post_list' %}">(Micro)Blog</a></li>
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
 
         {% block content %}
-            <div class="container">
+            <main class="container main">
                 <div class="inner-container">
-                    <div class="details {% block details_class %}{% endblock %}">{% block content_detail %}{% endblock %}</div>
+                    <div class="details {% block details_class %}col-xs-12 col-sm-10 col-sm-offset-1{% endblock %}">{% block content_detail %}{% endblock %}</div>
                 </div>
-            </div>
+            </main>
         {% endblock %}
 
     {% show_disclaimer %}
     {% endspaceless %}
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    {% addtoblock "js" %}<script src="{{ STATIC_URL }}site/js/jquery/bootstrap.min.js"></script>{% endaddtoblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     {% addtoblock "js" %}<script src="{{ STATIC_URL }}site/js/main.js"></script>{% endaddtoblock %}
 
     {% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}
