@@ -1,4 +1,3 @@
-/guedes/static/*
 errors.log
 .sass-cache/
 env/
@@ -7,7 +6,7 @@ env/
 .DS_Store
 ./media/
 media/
-./static/
+/static/*
 ./backups/
 *.project
 *.pydevproject
@@ -22,4 +21,4 @@ logs/
 build/
 database.db
 /guedes.zip
-/guedes/db_settings.zip
+db_settings.zip
