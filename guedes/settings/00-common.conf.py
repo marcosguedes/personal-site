@@ -3,6 +3,7 @@ import sys
 
 gettext = lambda s: s
 PROJECT_PATH = os.path.join(os.path.realpath(os.path.dirname(__file__)), '../')
+BASE_DIR = PROJECT_PATH
 
 # add apps folders
 for d in ['plugins', 'apps', 'lib']:
@@ -162,6 +163,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'solo',
     'bakery',
+    'colorful',
 
     'blog',
     'personalsite',
