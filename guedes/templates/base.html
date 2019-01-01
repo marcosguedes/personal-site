@@ -14,12 +14,15 @@
         <meta name="twitter:description" content="{% block twitter_description %}{% if microformat.description %}{{ microformat.description }}{% endif %}{% endblock %}" />
         <meta property="og:image:width"  content="1200" />
         <meta property="og:image:height" content="630" />
-
+        
+        <meta property="og:site_name" content="{{ site.name }}" />
         <meta property="og:type"         content="website" />
         <meta property="og:url"          content="{{ request.build_absolute_uri }}" />
-        <meta property="og:locale"       content="pt" />
-        <meta name="twitter:card"        content="summary">
         <meta name="twitter:url"         content="{{ request.build_absolute_uri }}">
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:locale:alternate" content="pt_PT" />
+        <meta name="twitter:card"        content="summary">
+        {% block extra_meta %}{% endblock %}
         {% render_block "css" postprocessor "compressor.contrib.sekizai.compress" %}
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}
         {% addtoblock "css" %}<link href="{{ STATIC_URL }}site/css/fontello/animation.css" media="screen, projection, print" rel="stylesheet" type="text/css" />{% endaddtoblock %}

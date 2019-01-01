@@ -3,6 +3,28 @@
 
 {% block head_title %}{{ object.title }} | {{ block.super }}{% endblock %}
 
+{% block opengraph_title %}{{ object.title }}{% endblock %}
+{% block opengraph_image %}{% endblock %}
+{% block opengraph_description %}{{ object.text }}{% endblock %}
+{% block twitter_title %}{{ object.title }}{% endblock %}
+{% block twitter_image %}{% endblock %}
+{% block twitter_description %}{{ object.text }}{% endblock %}
+{% block extra_meta %}
+    <meta property="article:published_time" content="{{ object.date_created }}" />
+    <meta property="article:author" content="{{ site.name }}" />
+{% endblock %}
+
+
 {% block content_detail %}
-    {% include "blog/partials/post_header.html" %}
+    <div class="article-header">
+	    <h1>{{ object.title }} <a href="{{ post.get_absolute_url }}">#</a></h1>
+	    {% if object.text %}<p>{{ object.text|linebreaksbr }}</p>{% endif %}
+	    <div>
+	        <span class="badge">{% trans "Posted on" %} {{ object.date_created|date:"Y/m/d @ H:m" }}</span>
+	    </div>
+	    <div><small>
+	        {% trans "Filed under" %} {% for tag in object.get_tags %}<a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+	    </small></div>
+	</div>
+	    
 {% endblock %}
