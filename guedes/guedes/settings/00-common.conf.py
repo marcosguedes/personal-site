@@ -11,7 +11,7 @@ for d in ['plugins', 'apps', 'lib']:
 DEBUG = True
 
 ADMINS = (
-    ('Marcos', 'marcos@guedes.com.pt'),
+    ('Marcos Guedes', 'marcos@guedes.com.pt'),
 )
 
 MANAGERS = ADMINS
@@ -44,7 +44,10 @@ LANGUAGE_CODE = 'en'
 
 from django.utils.translation import ugettext_lazy as _
 
-LANGUAGES = (('en', _('English')),)
+LANGUAGES = (
+    ('en', _('English')),
+    ('pt', _('Português')),
+)
 
 LOCALE_PATHS = (os.path.join(PROJECT_PATH, '../locale/'), )
 
@@ -159,9 +162,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'solo',
     'bakery',
-    
-    # 'aboutme',
-    'blog',  # TODO
+
+    'blog',
     'personalsite',
     'cookiedisclaimer',
     'randomfunctionalities',
@@ -265,3 +267,6 @@ LOGGING = {
 
     }
 }
+
+import django_heroku
+django_heroku.settings(locals())

@@ -1,8 +1,5 @@
 /guedes/static/*
-
-local_settings.py
 errors.log
-*local_settings.py
 .sass-cache/
 env/
 *.pyc
@@ -20,6 +17,7 @@ backups/
 *~
 *.komodoproject
 92-local_settings_devel.conf.py
+99-secret_settings.conf.py
 logs/
 build/
 database.db
